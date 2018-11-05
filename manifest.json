@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "for-moon authenticator",
+  "version": "2018.11.3",
+  "description": "포문 인증 도구",
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "webNavigation",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "externally_connectable": {
+    "matches": ["*://localhost:*/*", "*://localhost/*"]
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
